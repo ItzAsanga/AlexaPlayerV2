@@ -80,7 +80,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
     draw.text((23, 550), f"Title: {title}", (255, 255, 255), font=font)
     draw.text((23, 590), f"Duration: {duration}", (255, 255, 255), font=font)
     draw.text((23, 630), f"Views: {views}", (255, 255, 255), font=font)
-    draw.text((190, 670),f"Powered By: Asanga Udara",(255, 255, 255),font=font,)
+    draw.text((23, 670),f"Powered By: Asanga Udara",(255, 255, 255),font=font,)
     img.save("final.png")
     os.remove("temp.png")
     os.remove("background.png")
@@ -95,7 +95,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 )
 async def play(_, message: Message):
 
-    lel = await message.reply("🔎")
+    lel = await message.reply("**Searching**...")
 
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
@@ -299,7 +299,6 @@ async def play(_, message: Message):
                 message.from_user.mention(),
                 position,
             ),
-            reply_markup=keyboard,
         )
         os.remove("final.png")
         return await lel.delete()
@@ -316,7 +315,6 @@ async def play(_, message: Message):
 
         await message.reply_photo(
             photo="final.png",
-            reply_markup=keyboard,
             caption="**🎵 𝗦𝗼𝗻𝗴:** {}\n**🕒 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻:** {} 𝗠𝗶𝗻\n**👤 𝗔𝗱𝗱𝗲𝗱 𝗕𝘆:** {}\n**▶️ 𝗡𝗼𝘄 𝗣𝗹𝗮𝘆𝗶𝗻𝗴 𝗔𝘁 `{}`...**".format(
                 title, duration, message.from_user.mention(), message.chat.title
             ),
