@@ -1,3 +1,4 @@
+git+https://github.com/ItzAsanga/amor@master
 pyrogram
 TgCrypto
 py-tgcalls
